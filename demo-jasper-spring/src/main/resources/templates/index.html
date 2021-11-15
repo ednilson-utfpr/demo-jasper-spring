@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="pt"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout-padrao}">
+<head>
+</head>
+<body>
+<section layout:fragment="conteudo">
+    <section id="slider">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div id="slider-carousel" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#slider-carousel" data-slide-to="0" class="active"></li>
+                            <li data-target="#slider-carousel" data-slide-to="1"></li>
+                            <li data-target="#slider-carousel" data-slide-to="2"></li>
+                        </ol>
+
+                        <div class="carousel-inner">
+                            <div class="item active">
+                                <div class="col-sm-6">
+                                    <h1><span>E</span>-CAKES</h1>
+                                    <!--                                    <h2>Free E-Commerce Template</h2>-->
+                                    <p> Bolo de aniversário super colorido e alegre.
+                                    </p>
+                                    <button type="button" class="btn btn-default get">Quero</button>
+                                </div>
+                                <div class="col-sm-6">
+                                    <img src="images/home/bolo1.jpg" class="girl img-responsive" alt=""/>
+                                    <img src="images/home/pricing.png" class="pricing" alt=""/>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="col-sm-6">
+                                    <h1><span>E</span>-CAKES</h1>
+                                    <!--                                    <h2>100% Responsive Design</h2>-->
+                                    <p>
+                                        Bolo de chocolate, recheado com brigadeiro e cobertura de mirtilos.
+                                    </p>
+                                    <button type="button" class="btn btn-default get">Quero</button>
+                                </div>
+                                <div class="col-sm-6">
+                                    <img src="images/home/bolo2.jpg" class="girl img-responsive" alt=""/>
+                                    <img src="images/home/pricing.png" class="pricing" alt=""/>
+                                </div>
+                            </div>
+
+                            <div class="item">
+                                <div class="col-sm-6">
+                                    <h1><span>E</span>-CAKES</h1>
+                                    <!--                                    <h2>Free Ecommerce Template</h2>-->
+                                    <p>
+                                        Bolo com cobertura de chocolate, super saboroso.
+                                    </p>
+                                    <button type="button" class="btn btn-default get">Quero</button>
+                                </div>
+                                <div class="col-sm-6">
+                                    <img src="images/home/bolo3.jpg" class="girl img-responsive" alt=""/>
+                                    <img src="images/home/pricing.png" class="pricing" alt=""/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
+                            <i class="fa fa-angle-left"></i>
+                        </a>
+                        <a href="#slider-carousel" class="right control-carousel hidden-xs" data-slide="next">
+                            <i class="fa fa-angle-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--/slider-->
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="left-sidebar">
+                        <div th:replace="layout/fragments/category :: category(${categorias})"></div>
+                        <div th:replace="layout/fragments/marcas :: marcas"></div>
+                        <div th:replace="layout/fragments/price-range :: price-range"></div>
+
+                        <div class="shipping text-center">
+                            <img th:src="@{/images/home/folder.jpg}" alt=""/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-9 padding-right">
+                    <div class="features_items">
+                        <h2 class="title text-center">Items em Destaque</h2>
+                        <div th:replace="layout/fragments/product :: product(${produtos})"></div>
+                    </div>
+
+                    <nav>
+                        <ul class="pagination" th:if="${produtos.totalPages > 0}">
+                            <li class="page-item" th:classappend="${pageNumber==produtos.number + 1} ? active"
+                                th:each="pageNumber: ${pageNumbers}">
+                                <a class="page-link" th:href="@{/(size=${produtos.size}, page=${pageNumber})}"
+                                   th:text="${pageNumber}"></a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <!--BOLO PERSONALIZADO ABAIXO-->
+                    <div class="category-tab">
+                        <div class="col-sm-12">
+                            <ul class="nav nav-tabs">
+                                <li class="active">
+                                    <a href="#formato" data-toggle="tab">Formato Bolo</a></li>
+                                <li><a href="#cobertura" data-toggle="tab">Coberturas</a></li>
+                                <li><a href="#recheio" data-toggle="tab">Recheios</a></li>
+                                <!--ABA DE COBERTURAS-->
+                                <div class="tab-pane fade" id="cobertura">
+                                    <div class="col-sm-3">
+                                        <div class="product-image-wrapper">
+                                            <div class="single-products">
+                                                <div class="productinfo text-center">
+                                                    <img src="images/home/coberturachocolatepreto.jpg" alt=""/>
+                                                    <h2>R$20</h2>
+                                                    <p>Chocolate Preto</p>
+                                                    <a href="#" class="btn btn-default add-to-cart"
+                                                    ><i class="fa fa-shopping-cart"></i>Adicionar ao carrinho</a
+                                                    >
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="product-image-wrapper">
+                                            <div class="single-products">
+                                                <div class="productinfo text-center">
+                                                    <img src="images/home/coberturachocolatbranco.jpg" alt=""/>
+                                                    <h2>R$20</h2>
+                                                    <p>Chocolate Branco</p>
+                                                    <a href="#" class="btn btn-default add-to-cart"
+                                                    ><i class="fa fa-shopping-cart"></i>Adicionar ao carrinho</a
+                                                    >
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="tab-pane fade" id="recheio">
+                                    <div class="col-sm-3">
+                                        <div class="product-image-wrapper">
+                                            <div class="single-products">
+                                                <div class="productinfo text-center">
+                                                    <img src="images/home/gallery3.jpg" alt=""/>
+                                                    <h2>$56</h2>
+                                                    <p>Easy Polo Black Edition</p>
+                                                    <a href="#" class="btn btn-default add-to-cart"
+                                                    ><i class="fa fa-shopping-cart"></i>Adicionar ao carrinho</a
+                                                    >
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="product-image-wrapper">
+                                            <div class="single-products">
+                                                <div class="productinfo text-center">
+                                                    <img src="images/home/gallery4.jpg" alt=""/>
+                                                    <h2>$56</h2>
+                                                    <p>Easy Polo Black Edition</p>
+                                                    <a href="#" class="btn btn-default add-to-cart"
+                                                    ><i class="fa fa-shopping-cart"></i>Adicionar ao carrinho</a
+                                                    >
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="product-image-wrapper">
+                                            <div class="single-products">
+                                                <div class="productinfo text-center">
+                                                    <img src="images/home/gallery1.jpg" alt=""/>
+                                                    <h2>$56</h2>
+                                                    <p>Easy Polo Black Edition</p>
+                                                    <a href="#" class="btn btn-default add-to-cart"
+                                                    ><i class="fa fa-shopping-cart"></i>Adicionar ao carrinho</a
+                                                    >
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="product-image-wrapper">
+                                            <div class="single-products">
+                                                <div class="productinfo text-center">
+                                                    <img src="images/home/gallery2.jpg" alt=""/>
+                                                    <h2>$56</h2>
+                                                    <p>Easy Polo Black Edition</p>
+                                                    <a href="#" class="btn btn-default add-to-cart"
+                                                    ><i class="fa fa-shopping-cart"></i>Adicionar ao carrinho</a
+                                                    >
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                        </div>
+                    </div>
+                    <!--/category-tab-->
+
+                    <!--                    PRODUTOS EM PROMOÇÃO ABAIXO-->
+                    <div class="recommended_items">
+                        <h2 class="title text-center">Produtos em Promoção</h2>
+
+                        <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="item active">
+                                    <div class="col-sm-4">
+                                        <div class="product-image-wrapper">
+                                            <div class="single-products">
+                                                <div class="productinfo text-center">
+                                                    <img src="images/home/bolo2.jpg" alt=""/>
+                                                    <h2>R$56</h2>
+                                                    <p>Bolo de Chocolate</p>
+                                                    <a href="#" class="btn btn-default add-to-cart"
+                                                    ><i class="fa fa-shopping-cart"></i>Adicionar ao carrinho</a
+                                                    >
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <a class="left recommended-item-control" href="#recommended-item-carousel"
+                               data-slide="prev">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a class="right recommended-item-control" href="#recommended-item-carousel"
+                               data-slide="next">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <!--/recommended_items-->
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+</section>
+</body>
+</html>
